@@ -1,0 +1,33 @@
+/*-----------------------navigation Bar--------------------------------  */
+*{
+    padding: 0;
+    margin: 0;
+}
+a,Link{
+    text-decoration: none;
+    /* background: #000; */
+}
+h2{
+    text-align: center;
+    font-variant: small-caps;
+}
+.NavigationBar ul{
+    /* background: #938f8f; */
+    text-align: center;
+    padding: 20px 0px;
+}
+.NavigationBar ul li{
+    padding: 7px 15px;
+    display: inline;
+    border-radius: 20px;
+    background: #000000a4;
+    margin: 10px;
+}
+.NavigationBar ul li:hover{
+    transition: 1s;
+    cursor: pointer;
+    background: #000000ca;
+}
+.NavigationBar a{
+    color: aliceblue;
+}
