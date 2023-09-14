@@ -1,9 +1,8 @@
 import React from "react"
 import styles from '../App.module.css';
 import { Link,Routes,Route } from 'react-router-dom';
-
+import { AllCourse,MyCourse } from "./CourseFolders";
 export default function Course(){
-
     const CourseNavigation=()=>{
         return(
             <div>
@@ -15,10 +14,13 @@ export default function Course(){
     return (
         <div className={styles.Course}>
             {CourseNavigation()}
+            <div className={styles.Courselistbox}>
             <Routes>
-                <Route exact path='/course/allcourse' element={""}/>
-                <Route exact path='/course/mycourse' element={""}/>
+                <Route exact path='/' element={<AllCourse/>}/>
+                <Route exact path='/allcourse' element={<AllCourse/>}/>
+                <Route exact path='/mycourse' element={<MyCourse/>}/>
             </Routes>
+            </div>
         </div>
     )
 }

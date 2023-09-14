@@ -31,3 +31,10 @@ h2{
 .NavigationBar a{
     color: aliceblue;
 }
+/* ---------------------------------------------------course list ------------------------------------- */
+.Course{
+    display:flex;
+    align-items: center;
+    justify-content:center;
+    flex-wrap: wrap;
+}
