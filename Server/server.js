@@ -14,30 +14,26 @@ exp.get("/allcourse", async(req, res) => {
         var colletion = mainapp.collection("Products");
         result =await colletion.find({}).toArray();
         res.send(result);
-});
-exp.post("/storePayment", (req, res) => {
-    const {data,detials } = req.body;
-    console.log(detials);
+    });
+exp.post("/storePayment", async(req, res) => {
+    const {infos,id,user } = req.body;
+    var PaidContent = mainapp.collection("PaidContent");
+    result =await PaidContent.find({product_id:id}).toArray();
+    coursedata={
+        ...result[0],
+        ...infos
+    }
+    console.log(coursedata);
+    var Users = mainapp.collection("Users");
+    await Users.updateOne({ uid:user.uid},{ $push: { Products: coursedata } } );
     res.status(200).json({ message: "Payment data stored successfully" });
-  });
-exp.post("/allcourseuhique", (req, res) => {
-    mainapp.collection("").aggregate([
-        {
-          $lookup: {
-            from: "collection2",
-            localField: "name", // Field in collection1
-            foreignField: "name", // Field in collection2
-            as: "matches"
-          }
-        },
-        {
-          $match: {
-            matches: { $eq: [] } // Filter documents with no matches in collection2
-          }
-        }
-      ]);
-      
-  });
+});
+exp.post("/UserDetials", async(req, res) => {
+    var Users = mainapp.collection("Users");
+    const result=await Users.find({uid:req.body.uid}).toArray();
+    res.send(result);
+});
+
 exp.listen(8080,(err,result)=>{
     const MONGO_URI = "mongodb+srv://developerD:vaD8WpBedDz8oxrb@diva.tnace52.mongodb.net/?retryWrites=true&w=majority";
     const client = new MongoClient(MONGO_URI, {

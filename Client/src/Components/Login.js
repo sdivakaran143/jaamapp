@@ -1,20 +1,24 @@
-import { React, useState } from "react";
+import { React, useState,useContext, useEffect } from "react";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth"
 import { auth } from '../utils/Firebase';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'
+import {UserReferesh}  from "../App";
+
 export const Login = (props) => {
+    const Userreloard = useContext(UserReferesh);
     const navigate = useNavigate();
     const [mailid, setmailid] = useState("")
     const [password, setpassword] = useState("")
 
-        const LoginWithDatas = async () => {
+    const LoginWithDatas = async () => {
         try {
             await signInWithEmailAndPassword(auth, mailid, password);
-            navigate("/home")
+                Userreloard();  
+                navigate("/home")
         }
         catch (err) {
             navigate("/")
-            alert("invalid user")
+            alert("invalid user / Retry")
         }
     }
 

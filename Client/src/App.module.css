@@ -12,27 +12,36 @@ h2{
     font-variant: small-caps;
 }
 .NavigationBar ul{
-    /* background: #938f8f; */
+    background: #e6a4d3ca;
     text-align: center;
-    padding: 20px 0px;
+    padding: 10px 0px;
 }
 .NavigationBar ul li{
-    padding: 7px 15px;
+    padding: 10px 15px;
     display: inline;
-    border-radius: 20px;
-    background: #000000a4;
     margin: 10px;
 }
 .NavigationBar ul li:hover{
     transition: 1s;
+    background: #ec8bd0ca;
     cursor: pointer;
-    background: #000000ca;
 }
 .NavigationBar a{
     color: aliceblue;
+    font-weight: bolder;
 }
 /* ---------------------------------------------------course list ------------------------------------- */
-.Course{
+.CourseContent .navigations{
+    text-align: center;
+    margin: 20px;
+}
+.CourseContent .navigations a{
+    padding: 10px 5px;
+    background: #d2c9c9;
+    border: 1px solid black;
+    margin: 0px 10px;
+}
+.Course{    
     display:flex;
     align-items: center;
     justify-content:center;
