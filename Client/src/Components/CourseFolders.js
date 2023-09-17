@@ -1,18 +1,17 @@
 import { useEffect, useState,useContext } from 'react';
 import styles from '../App.module.css';
 import axios from 'axios';
-import { ProductCard } from 'react-ui-cards';
+import { Link } from 'react-router-dom';
 import { UserContext,UserReferesh } from '../App';
 const AllCourse = () => {
     const {user} = useContext(UserContext);
     const userreloard = useContext(UserReferesh);
     const [allcoursedata, setallcoursedata] = useState([]);
-    const [paymentStatus, setPaymentStatus] = useState("Pending");
     useEffect(() => {
         const fetchdata = async () => {
             const response = await axios.get("http://Localhost:8080/allcourse");
             try{
-                const filteredArray = response.data.filter((item1) =>!user.Products.some((item2) => item2.product_id === item1._id));
+                const filteredArray = response.data.filter((Product) =>!JSON.parse(sessionStorage.getItem("user")).Products.some((UserProducts) => UserProducts.product_id === Product._id));
                 setallcoursedata(filteredArray);
             }catch{
                 setallcoursedata(response.data);
@@ -34,7 +33,7 @@ const AllCourse = () => {
             userreloard();
         } catch (error) {
             console.error("Error storing payment data:", error);
-            setPaymentStatus("Failure");
+            alert("Failure ocured Retry / Try again Later ");
         }
     };
     // console.log(user.uid);
@@ -45,7 +44,7 @@ const AllCourse = () => {
             amount: data.price * 100,
             currency: "INR",
             name: "Courseify",
-            description: "For testing purpose",
+            description: "Payment For the Premium Courses",
             handler: (response)=>{
                 handlePaymentSuccess(response,data)
             },
@@ -55,33 +54,40 @@ const AllCourse = () => {
                 contact: user.phone,
             },
             notes: {
-                address: "Razorpay Corporate office",
+                address:"Developer Street,React(Tk),Web(DT)-404",
             },
             theme: {
                 color: "#3399cc",
             },
         };
-        var pay = new window.Razorpay(options);
-        pay.open();
+        if(sessionStorage.getItem("user")){
+            var pay = new window.Razorpay(options);
+            pay.open();
+        }else
+            alert("Please SignIn");
     };
-
+    
     return (
         <div className={styles.Course}>
             {allcoursedata.map((data, i) => {
                 return (
-                    <ProductCard
-                    key={i}
-                    photos={[
-                        'https://i.imgur.com/jRVDeI8.jpg'
-                    ]}
-                    price={data.price}
-                        productName={data.title}
-                        description={data.description}
-                        buttonText='Buy'
-                        onClick={() => {openRazorpay(data)}}
-                        />
-                        )
-                    })
+                    <div className={styles.card} key={i}>
+                        <div className={styles.top}
+                         style={{
+                             background:`url("https://i.imgur.com/jRVDeI8.jpg") no-repeat`,
+                             backgroundSize:"cover"
+                            }}>
+                            <span>&#8377; {data.price}</span>
+                        </div>
+                        <div className={styles.bottom}>
+                            <h2>{data.tittle}</h2>
+                            <p>{data.description}</p>
+                            <p>{data.channel_name} | {data.instructor} | {data.duration} </p>
+                            <button onClick={() => {openRazorpay(data)}}>Buy</button>
+                        </div>
+                    </div>
+                    )
+                })
                 }
         </div>
     )
@@ -89,31 +95,36 @@ const AllCourse = () => {
 
 const MyCoursegenerate = (Products) => {
     return(
-        <div>
+        <div className={styles.Course}>
              {Products.map((data, i) => {
-            return (
-                <ProductCard
-                    key={i}
-                    photos={[
-                        'https://i.imgur.com/jRVDeI8.jpg'
-                    ]}
-                    price="Purchased"
-                    productName={data.title}
-                    description={data.description}
-                    buttonText='Go to Course'
-                    url={data.link}
-                    />
+                 return (
+                    <div className={styles.card} key={i}>
+                    <div className={styles.top}
+                     style={{
+                         background:`url("https://i.imgur.com/jRVDeI8.jpg") no-repeat`,
+                         backgroundSize:"cover"
+                        }}>
+                        <span>Purchased</span>
+                        {/* <img src='https://i.imgur.com/jRVDeI8.jpg'/> */}
+                    </div>
+                    <div className={styles.bottom}>
+                        <h2>{data.tittle}</h2>
+                        <p>{data.description}</p>
+                        <p>{data.channel_name} | {data.instructor} | {data.duration} </p>
+                        <Link to={data.link} target="_blank"className={[styles.Link,styles.Link1].join(' ')}>View Course</Link>
+                        <Link to={data.materials_link} target="_blank"className={[styles.Link,styles.Link2].join(' ')}>Materials</Link>
+                    </div>
+                    </div>
                     )
-        })
-        }
+                })
+            }
         </div>
     )
 }
 const MyCourse = () => {
-    const {user,HandleUser} = useContext(UserContext);
     return (
         <div className={styles.Course}>
-            {user.uid?MyCoursegenerate(user.Products):"Login to view Your course List"}
+            {JSON.parse(sessionStorage.getItem("user"))?MyCoursegenerate(JSON.parse(sessionStorage.getItem("user")).Products):"Login to view Your course List"}
         </div>
     )
 }

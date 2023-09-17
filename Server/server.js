@@ -10,6 +10,11 @@ var mainapp;
 exp.get("/",(req,res)=>{
     res.send("sucess");
 })
+exp.get("/alluser",async(req,res)=>{
+    var Users = mainapp.collection("Users");
+    const result=await Users.find({}).toArray();
+    res.send(result);
+})
 exp.get("/allcourse", async(req, res) => {
         var colletion = mainapp.collection("Products");
         result =await colletion.find({}).toArray();
@@ -18,12 +23,12 @@ exp.get("/allcourse", async(req, res) => {
 exp.post("/storePayment", async(req, res) => {
     const {infos,id,user } = req.body;
     var PaidContent = mainapp.collection("PaidContent");
+    console.log(id);
     result =await PaidContent.find({product_id:id}).toArray();
     coursedata={
         ...result[0],
         ...infos
     }
-    console.log(coursedata);
     var Users = mainapp.collection("Users");
     await Users.updateOne({ uid:user.uid},{ $push: { Products: coursedata } } );
     res.status(200).json({ message: "Payment data stored successfully" });

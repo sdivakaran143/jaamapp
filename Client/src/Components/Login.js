@@ -1,10 +1,10 @@
-import { React, useState,useContext, useEffect } from "react";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth"
+import { React, useState,useContext } from "react";
+import {signInWithEmailAndPassword } from "firebase/auth"
 import { auth } from '../utils/Firebase';
 import { useNavigate } from 'react-router-dom'
 import {UserReferesh}  from "../App";
 
-export const Login = (props) => {
+export const Login = () => {
     const Userreloard = useContext(UserReferesh);
     const navigate = useNavigate();
     const [mailid, setmailid] = useState("")

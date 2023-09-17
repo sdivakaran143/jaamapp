@@ -46,4 +46,71 @@ h2{
     align-items: center;
     justify-content:center;
     flex-wrap: wrap;
+    gap:20px;
+}
+/* ----------------------------------card --------------*/
+.card{
+    /* padding: 10px; */
+    width: 320px;
+    height: 66vh;
+    border-radius: 10px;
+    background: #f5f5f5;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.218);
+}
+.card .top{
+    border-radius: 10px;
+    position: relative;
+    height: 33vh;
+    /* background: #9f9e9e; */
+}
+.card .top span{
+    position: absolute;
+    background: rgb(55, 54, 54);
+    padding: 3px 7px;
+    border-radius: 5px;
+    color: white;
+    font-weight: 500;
+    left: 10px;
+    top: 10px;
+}
+.card .bottom{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    padding: 0px 10px;
+    height: 33vh;
+    text-align: center;
+    font-size: 80%;
+}
+.card .bottom button,.Link {
+    position: absolute;
+    bottom: 0px;
+    background: rgb(186, 185, 185);
+    color: rgb(255, 255, 255);
+    font-weight: 900;
+    border: none;
+    border-radius: 10px;
+    padding: 5px 0px;
+    width: 100%;
+}
+.card .bottom .Link1{
+    width: 50%;
+    left:0px;
+    padding: 5px 0px;
+    border-radius: 10px 0px 0px 10px;
+}
+.card .bottom .Link2{
+    width: 50%;
+    right:0px;
+    padding: 5px 0px;
+    border-radius: 0px 10px 10px 0px;
+}
+.card .bottom .Link2:hover,.Link1:hover{
+    background: rgb(93, 93, 93);
+}
+.card .bottom button:hover{
+    background: rgb(93, 93, 93);
 }
