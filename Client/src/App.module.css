@@ -12,19 +12,26 @@ h2{
     font-variant: small-caps;
 }
 .NavigationBar ul{
-    background: #e6a4d3ca;
+    font-variant: small-caps;
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.367);
+}
+.NavigationBar ul{
+    background: #fe6bd4b5;
     text-align: center;
-    padding: 10px 0px;
+    padding: 15px 0px;
 }
 .NavigationBar ul li{
-    padding: 10px 15px;
+    padding: 10px 14px;
     display: inline;
     margin: 10px;
 }
 .NavigationBar ul li:hover{
-    transition: 1s;
-    background: #ec8bd0ca;
+    transition: 0.5s;
+    background: #e22faf90;
     cursor: pointer;
+    border-radius: 10px;
 }
 .NavigationBar a{
     color: aliceblue;
@@ -33,13 +40,7 @@ h2{
 /* ---------------------------------------------------course list ------------------------------------- */
 .CourseContent .navigations{
     text-align: center;
-    margin: 20px;
-}
-.CourseContent .navigations a{
-    padding: 10px 5px;
-    background: #d2c9c9;
-    border: 1px solid black;
-    margin: 0px 10px;
+    margin: 20px 0px;
 }
 .Course{    
     display:flex;
@@ -113,4 +114,51 @@ h2{
 }
 .card .bottom button:hover{
     background: rgb(93, 93, 93);
+}
+/* ------------------------------------login box------------------------------------- */
+.loginbox{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
+}
+.loginbox .mainarea {
+    padding: 30px 20px;
+    width: 300px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.154);
+    border-radius: 10px;
+}
+.loginbox .inputfield{
+    margin: 25px 0px;
+    width:300px;
+}
+.loginbox .button{
+    text-align: center;
+}
+.loginbox .button button:last-child{
+    margin-top: 15px;
+    background-color: transparent;
+    border: none;
+    font-size:x-small;
+    font-weight: 900;
+}
+@media screen and (max-width:878px) {
+    .NavigationBar ul li{
+        padding: 0px 8px;
+    }
+}
+@media screen and (max-width:330px) {
+    .card{
+        width: 290px;
+        height: 60vh;
+    }
+    .card .top{
+        height: 30vh;
+    }
+    .card .bottom{
+        height: 30vh;
+    }
+    .loginbox .mainarea {
+        width: 280px;
+    }
 }

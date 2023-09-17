@@ -1,12 +1,21 @@
-import { useEffect, useState,useContext } from 'react';
+import { useEffect, useState,useContext} from 'react';
+import * as React from 'react';
 import styles from '../App.module.css';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { UserContext,UserReferesh } from '../App';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
+
+const Alert = React.forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
+
 const AllCourse = () => {
     const {user} = useContext(UserContext);
     const userreloard = useContext(UserReferesh);
     const [allcoursedata, setallcoursedata] = useState([]);
+    const [alertState, setAlertState] = useState(false);
     useEffect(() => {
         const fetchdata = async () => {
             const response = await axios.get("http://Localhost:8080/allcourse");
@@ -28,9 +37,8 @@ const AllCourse = () => {
                 user:user
             };
             const res=await axios.post("http://localhost:8080/storePayment", paymentData);
-            console.log(res.data);
-            alert("Thanks for purchasing the product!...");
             userreloard();
+            setAlertState(true);
         } catch (error) {
             console.error("Error storing payment data:", error);
             alert("Failure ocured Retry / Try again Later ");
@@ -45,9 +53,7 @@ const AllCourse = () => {
             currency: "INR",
             name: "Courseify",
             description: "Payment For the Premium Courses",
-            handler: (response)=>{
-                handlePaymentSuccess(response,data)
-            },
+            handler: (response)=>handlePaymentSuccess(response,data),
             prefill: {
                 name: user.name,
                 email: user.emailid,
@@ -66,10 +72,12 @@ const AllCourse = () => {
         }else
             alert("Please SignIn");
     };
-    
+    const handleClose=()=>{
+        setAlertState(false);
+    }
     return (
         <div className={styles.Course}>
-            {allcoursedata.map((data, i) => {
+            {(allcoursedata)?allcoursedata.map((data, i) => {
                 return (
                     <div className={styles.card} key={i}>
                         <div className={styles.top}
@@ -86,9 +94,13 @@ const AllCourse = () => {
                             <button onClick={() => {openRazorpay(data)}}>Buy</button>
                         </div>
                     </div>
-                    )
-                })
+                    )}):"Loading..."
                 }
+                <Snackbar open={alertState} autoHideDuration={6000} onClose={handleClose}>
+                <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+                    Thanks For Purchasing the Course
+                </Alert>
+                </Snackbar>
         </div>
     )
 }
@@ -115,9 +127,8 @@ const MyCoursegenerate = (Products) => {
                         <Link to={data.materials_link} target="_blank"className={[styles.Link,styles.Link2].join(' ')}>Materials</Link>
                     </div>
                     </div>
-                    )
-                })
-            }
+                    )})
+                }
         </div>
     )
 }
