@@ -26,6 +26,7 @@ const AllCourse = () => {
                 setallcourseload(false);
             }catch{
                 setallcoursedata(response.data);
+                setallcourseload(false);
             }
         }
         fetchdata();
