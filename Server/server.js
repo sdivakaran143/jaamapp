@@ -1,11 +1,11 @@
 const express=require("express");
 const {MongoClient} =require("mongodb");
 const cors = require('cors');
-require('dotenv').config();
-
 const exp=express();
+
 exp.use(cors());
 exp.use(express.json());
+require('dotenv').config();
 var mainapp;
 
 exp.get("/",(req,res)=>{

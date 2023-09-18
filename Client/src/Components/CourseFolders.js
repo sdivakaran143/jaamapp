@@ -15,19 +15,19 @@ const AllCourse = () => {
     const {user} = useContext(UserContext);
     const userreloard = useContext(UserReferesh);
     const [allcoursedata, setallcoursedata] = useState([]);
-    const [allcourseload, setallcourseload] = useState(true);
     const [alertState, setAlertState] = useState(false);
+    const [allcourseload, setallcourseload] = useState(false);
     useEffect(() => {
         const fetchdata = async () => {
+            setallcourseload(true);
             const response = await axios.get("https://jaam-app-api.onrender.com/allcourse");
             try{
                 const filteredArray = response.data.filter((Product) =>!JSON.parse(sessionStorage.getItem("user")).Products.some((UserProducts) => UserProducts.product_id === Product._id));
                 setallcoursedata(filteredArray);
-                setallcourseload(false);
             }catch{
                 setallcoursedata(response.data);
-                setallcourseload(false);
             }
+            setallcourseload(false);
         }
         fetchdata();
     }, [user]);
