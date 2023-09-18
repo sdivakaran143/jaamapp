@@ -94,7 +94,8 @@ const AllCourse = () => {
                         <div className={styles.bottom}>
                             <h2>{data.tittle}</h2>
                             <p>{data.description}</p>
-                            <p>{data.channel_name} | {data.instructor} | {data.duration} </p>
+                            <p>{data.channel_name} | {data.instructor} | {data.duration}</p>
+                            <p className={styles.hidden}>&nsbp;</p>
                             <button onClick={() => {openRazorpay(data)}}>Buy</button>
                         </div>
                     </div>
@@ -127,6 +128,7 @@ const MyCoursegenerate = (Products) => {
                         <h2>{data.tittle}</h2>
                         <p>{data.description}</p>
                         <p>{data.channel_name} | {data.instructor} | {data.duration} </p>
+                        <p className={styles.hidden}>&nsbp;</p>
                         <Link to={data.link} target="_blank"className={[styles.Link,styles.Link1].join(' ')}>View Course</Link>
                         <Link to={data.materials_link} target="_blank"className={[styles.Link,styles.Link2].join(' ')}>Materials</Link>
                     </div>
