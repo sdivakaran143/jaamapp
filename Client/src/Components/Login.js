@@ -39,7 +39,7 @@ export const Login = () => {
         try {
             setLoading(true);
             await createUserWithEmailAndPassword(auth, userdata.mailid,password);
-            const result = await axios.post("http://localhost:8080/RegistertoDB",{...userdata,uid:auth?.currentUser?.uid})
+            const result = await axios.post("https://jaam-app-api.onrender.com/RegistertoDB",{...userdata,uid:auth?.currentUser?.uid})
             console.log(result.data.message);
             setLoading(false);
             switchSignOption();

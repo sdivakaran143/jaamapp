@@ -14,7 +14,7 @@ function App() {
 
   const GetUserData = () => {
     const fetchdata = async () => {
-      const response = await axios.post("http://localhost:8080/UserDetials", { uid: auth.currentUser?.uid });
+      const response = await axios.post("https://jaam-app-api.onrender.com/UserDetials", { uid: auth.currentUser?.uid });
       HandleUser(response.data[0]);
       sessionStorage.setItem("user", JSON.stringify(response.data[0]));
       console.log(JSON.parse(sessionStorage.getItem("user")));

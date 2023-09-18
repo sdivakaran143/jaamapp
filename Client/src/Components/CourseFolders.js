@@ -18,7 +18,7 @@ const AllCourse = () => {
     const [alertState, setAlertState] = useState(false);
     useEffect(() => {
         const fetchdata = async () => {
-            const response = await axios.get("http://Localhost:8080/allcourse");
+            const response = await axios.get("https://jaam-app-api.onrender.com/allcourse");
             try{
                 const filteredArray = response.data.filter((Product) =>!JSON.parse(sessionStorage.getItem("user")).Products.some((UserProducts) => UserProducts.product_id === Product._id));
                 setallcoursedata(filteredArray);
@@ -36,7 +36,7 @@ const AllCourse = () => {
                 id:data._id,
                 user:user
             };
-            const res=await axios.post("http://localhost:8080/storePayment", paymentData);
+            await axios.post("https://jaam-app-api.onrender.com/storePayment", paymentData);
             userreloard();
             setAlertState(true);
         } catch (error) {
