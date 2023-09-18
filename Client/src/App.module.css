@@ -48,6 +48,7 @@ h2{
     justify-content:center;
     flex-wrap: wrap;
     gap:20px;
+    padding:10px 0px;
 }
 /* ----------------------------------card --------------*/
 .card{
@@ -180,7 +181,7 @@ h2{
 }
 @media screen and (max-width:878px) {
     .NavigationBar ul li{
-        padding: 0px 8px;
+        padding: 10px 8px;
     }
 }
 @media screen and (max-width:330px) {
