@@ -6,7 +6,8 @@ import { Link } from 'react-router-dom';
 import { UserContext,UserReferesh } from '../App';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
-
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
@@ -40,6 +41,7 @@ const AllCourse = () => {
             };
             await axios.post("https://jaam-app-api.onrender.com/storePayment", paymentData);
             userreloard();
+            alert("Payment Successfull");
             setAlertState(true);
         } catch (error) {
             console.error("Error storing payment data:", error);
@@ -96,7 +98,7 @@ const AllCourse = () => {
                             <button onClick={() => {openRazorpay(data)}}>Buy</button>
                         </div>
                     </div>
-                    )}):"Loading..."
+                    )}):<div><CircularProgress color="inherit"/></div>
                 }
                 <Snackbar open={alertState} autoHideDuration={6000} onClose={handleClose}>
                 <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
