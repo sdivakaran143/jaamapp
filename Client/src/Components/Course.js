@@ -9,8 +9,8 @@ export default function Course() {
         return (
             <div className={styles.navigations}>
                 <ButtonGroup color="secondary" aria-label="medium secondary button group">
-                    <Button><Link to="/course/allcourse">All Courses</Link></Button>
-                    <Button><Link to="/course/mycourse">My Couses</Link></Button>
+                    <Link to="/course/allcourse"><Button>All Courses</Button></Link>
+                    <Link to="/course/mycourse"><Button>My Couses</Button></Link>
                 </ButtonGroup>
             </div>
         )

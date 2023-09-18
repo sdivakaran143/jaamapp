@@ -142,6 +142,42 @@ h2{
     font-size:x-small;
     font-weight: 900;
 }
+/* ------------------------------------Home------------------------------------- */
+.home .title{
+    text-align: center;
+    background:linear-gradient(rgba(0, 0, 0, 0.638),rgba(0, 0, 0, 0.659)),url(https://img.freepik.com/free-vector/online-certification-illustration_23-2148575636.jpg?w=1060&t=st=1695034507~exp=1695035107~hmac=baadc5809d2554528eee49e7c98e440af4325867dd0cae72427703297acc9ffc) no-repeat right;
+    /* background-size: contain; */
+    height: 70vh;
+    margin: 10px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 40px;
+    /* justify-content: center; */
+}
+.title h1{
+    font-variant: small-caps;
+    letter-spacing: 7px;
+    line-height: 50px;
+    color: rgb(0, 0, 0);
+    background: #e4e3e8e8;
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    /* width: 50vw; */
+}
+.title p{
+    border-radius: 5px;
+    margin: 10px;
+    padding: 10px;
+    background: #e4e3e8e8;
+}
+.buttoncenter{
+    margin: 20px;
+    text-align: center;
+}
 @media screen and (max-width:878px) {
     .NavigationBar ul li{
         padding: 0px 8px;
