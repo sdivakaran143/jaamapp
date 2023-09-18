@@ -194,6 +194,7 @@ h2{
 @media screen and (max-width:878px) {
     .NavigationBar ul li{
         padding: 10px 8px;
+        margin: 5px;
     }
     .home .title{
         background-size: cover;

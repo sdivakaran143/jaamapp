@@ -8,7 +8,7 @@ export default function Course() {
     const CourseNavigation = () => {
         return (
             <div className={styles.navigations}>
-                <ButtonGroup color="inherit" aria-label="medium secondary button group">
+                <ButtonGroup color="primary" aria-label="medium secondary button group">
                     <Link to="/course/allcourse"><Button>All Courses</Button></Link>
                     <Link to="/course/mycourse"><Button>My Couses</Button></Link>
                 </ButtonGroup>

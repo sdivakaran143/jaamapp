@@ -80,7 +80,7 @@ export const Login = () => {
                     setpassword(e.target.value);
                  }}/> 
                 <div className={styles.button}>
-                        <Button onClick={(signin)?LoginWithDatas:SignUpWithDatas} variant="contained" color="secondary">{(signin)?"LogIn":"SignUp"}</Button> 
+                        <Button onClick={(signin)?LoginWithDatas:SignUpWithDatas} variant="contained" color="primary">{(signin)?"LogIn":"SignUp"}</Button> 
                         <br/>
                         <button onClick={switchSignOption}>{(signin)?"New User ? SignUp":"Existing User? Login"}</button>
                 </div>

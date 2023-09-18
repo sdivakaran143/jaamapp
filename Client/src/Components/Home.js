@@ -9,7 +9,7 @@ export default function Home(){
         <h1>Premium Couses To UpSkill Your Skills</h1>
         <p>Learn (almost) anything. Log in now to save on courses.</p>
         <div  className={styles.buttoncenter}>
-      <Link to="/course"><Button variant="contained" color="secondary">Visit Courses</Button></Link>
+      <Link to="/course"><Button variant="contained" color="primary">Visit Courses</Button></Link>
       </div>
       </div>
     </div>
