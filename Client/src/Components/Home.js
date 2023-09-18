@@ -8,9 +8,9 @@ export default function Home(){
       <div className={styles.title}>
         <h1>Premium Couses To UpSkill Your Skills</h1>
         <p>Learn (almost) anything. Log in now to save on courses.</p>
-      </div>
-      <div  className={styles.buttoncenter}>
+        <div  className={styles.buttoncenter}>
       <Link to="/course"><Button variant="contained" color="secondary">Visit Courses</Button></Link>
+      </div>
       </div>
     </div>
   )
