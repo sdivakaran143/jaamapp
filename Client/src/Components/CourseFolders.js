@@ -15,6 +15,7 @@ const AllCourse = () => {
     const {user} = useContext(UserContext);
     const userreloard = useContext(UserReferesh);
     const [allcoursedata, setallcoursedata] = useState([]);
+    const [allcourseload, setallcourseload] = useState(true);
     const [alertState, setAlertState] = useState(false);
     useEffect(() => {
         const fetchdata = async () => {
@@ -22,6 +23,7 @@ const AllCourse = () => {
             try{
                 const filteredArray = response.data.filter((Product) =>!JSON.parse(sessionStorage.getItem("user")).Products.some((UserProducts) => UserProducts.product_id === Product._id));
                 setallcoursedata(filteredArray);
+                setallcourseload(false);
             }catch{
                 setallcoursedata(response.data);
             }
@@ -77,7 +79,7 @@ const AllCourse = () => {
     }
     return (
         <div className={styles.Course}>
-            {(allcoursedata)?allcoursedata.map((data, i) => {
+            {(!allcourseload)?allcoursedata.map((data, i) => {
                 return (
                     <div className={styles.card} key={i}>
                         <div className={styles.top}
