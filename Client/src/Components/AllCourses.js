@@ -3,8 +3,6 @@ import * as React from 'react';
 import styles from '../App.module.css';
 import axios from 'axios';
 import {BsCart3} from 'react-icons/bs'
-import {SiPowerpages,SiDatabricks} from 'react-icons/si'
-import { Link } from 'react-router-dom';
 import { UserContext,UserReferesh } from '../App';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
@@ -13,7 +11,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
-const AllCourse = () => {
+export default function  AllCourse(){
     const {user} = useContext(UserContext);
     const userreloard = useContext(UserReferesh);
     const [allcoursedata, setallcoursedata] = useState([]);
@@ -28,8 +26,9 @@ const AllCourse = () => {
                 setallcoursedata(filteredArray);
             }catch{
                 setallcoursedata(response.data);
+            }finally{
+                setallcourseload(false);
             }
-            setallcourseload(false);
         }
         fetchdata();
     }, [user]);
@@ -41,16 +40,16 @@ const AllCourse = () => {
                 Productdata:data,
                 user:user
             };
-            await axios.post("https://jaam-app-api.onrender.com/storePayment", paymentData);
-            userreloard();
+            await axios.post("https://jaam-app-api.onrender.com/storePayment",paymentData);
             alert("Payment Successfull");
             setAlertState(true);
+            userreloard();
         } catch (error) {
             console.error("Error storing payment data:", error);
             alert("Failure ocured Retry / Try again Later ");
         }
     };
-    // console.log(user.uid);
+
     const openRazorpay = (data) => {
         const options = {
             key: "rzp_test_Yarqrw4ky1W1GP",
@@ -111,40 +110,3 @@ const AllCourse = () => {
         </div>
     )
 }
-
-const MyCoursegenerate = (Products) => {
-    return(
-        <div className={styles.Course}>
-             {Products.map((data, i) => {
-                 return (
-                    <div className={styles.card} key={i}>
-                    <div className={styles.top}
-                     style={{
-                         background:`url("https://i.imgur.com/jRVDeI8.jpg") no-repeat`,
-                         backgroundSize:"cover"
-                        }}>
-                        <span>Purchased</span>
-                        {/* <img src='https://i.imgur.com/jRVDeI8.jpg'/> */}
-                    </div>
-                    <div className={styles.bottom}>
-                        <h2>{data.tittle}</h2>
-                        <p>{data.description}</p>
-                        <p>{data.channel_name} | {data.instructor} | {data.duration} </p>
-                        <p className={styles.hidden}>&nsbp;</p>
-                        <Link to={data.link} target="_blank"className={[styles.Link,styles.Link1].join(' ')}><SiDatabricks/> View Course</Link>
-                        <Link to={data.materials_link} target="_blank"className={[styles.Link,styles.Link2].join(' ')}>< SiPowerpages/> Materials</Link>
-                    </div>
-                    </div>
-                    )})
-                }
-        </div>
-    )
-}
-const MyCourse = () => {
-    return (
-        <div className={styles.Course}>
-            {JSON.parse(sessionStorage.getItem("user"))?MyCoursegenerate(JSON.parse(sessionStorage.getItem("user")).Products):"Login to view Your course List"}
-        </div>
-    )
-}
-export { AllCourse, MyCourse }

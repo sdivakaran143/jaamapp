@@ -1,7 +1,8 @@
 import React from "react"
 import styles from '../App.module.css';
 import { Link, Routes, Route } from 'react-router-dom';
-import { AllCourse, MyCourse } from "./CourseFolders";
+import MyCourse  from "./MyCourses";
+import AllCourse from "./AllCourses";
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 export default function Course() {
@@ -24,7 +25,7 @@ export default function Course() {
                     <Routes>
                         <Route exact path='/' element={<AllCourse />} />
                         <Route exact path='/allcourse' element={<AllCourse/>} />
-                        <Route exact path='/mycourse' element={<MyCourse />} />
+                        <Route exact path='/mycourse' element={<MyCourse/>} />
                     </Routes>
                 </div>
             </div>
