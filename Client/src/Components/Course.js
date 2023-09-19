@@ -10,6 +10,7 @@ export default function Course() {
             <div className={styles.navigations}>
                 <ButtonGroup color="primary" aria-label="medium secondary button group">
                     <Link to="/course/allcourse"><Button>All Courses</Button></Link>
+                    {/* <Link to="/course/allcourse"><Button>Free Courses</Button></Link> */}
                     <Link to="/course/mycourse"><Button>My Couses</Button></Link>
                 </ButtonGroup>
             </div>

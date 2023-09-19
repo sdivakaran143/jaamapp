@@ -2,6 +2,8 @@ import { useEffect, useState,useContext} from 'react';
 import * as React from 'react';
 import styles from '../App.module.css';
 import axios from 'axios';
+import {BsCart3,BsFillTagsFill} from 'react-icons/bs'
+import {SiPowerpages,SiDatabricks} from 'react-icons/si'
 import { Link } from 'react-router-dom';
 import { UserContext,UserReferesh } from '../App';
 import Snackbar from '@mui/material/Snackbar';
@@ -36,7 +38,7 @@ const AllCourse = () => {
         try {
             const paymentData = {
                 infos:response,
-                id:data._id,
+                Productdata:data,
                 user:user
             };
             await axios.post("https://jaam-app-api.onrender.com/storePayment", paymentData);
@@ -96,7 +98,7 @@ const AllCourse = () => {
                             <p>{data.description}</p>
                             <p>{data.channel_name} | {data.instructor} | {data.duration}</p>
                             <p className={styles.hidden}>&nsbp;</p>
-                            <button onClick={() => {openRazorpay(data)}}>Buy</button>
+                            <button onClick={() => {openRazorpay(data)}}><BsCart3/> Buy</button>
                         </div>
                     </div>
                     )}):<div><CircularProgress color="inherit"/></div>
@@ -129,8 +131,8 @@ const MyCoursegenerate = (Products) => {
                         <p>{data.description}</p>
                         <p>{data.channel_name} | {data.instructor} | {data.duration} </p>
                         <p className={styles.hidden}>&nsbp;</p>
-                        <Link to={data.link} target="_blank"className={[styles.Link,styles.Link1].join(' ')}>View Course</Link>
-                        <Link to={data.materials_link} target="_blank"className={[styles.Link,styles.Link2].join(' ')}>Materials</Link>
+                        <Link to={data.link} target="_blank"className={[styles.Link,styles.Link1].join(' ')}><SiDatabricks/> View Course</Link>
+                        <Link to={data.materials_link} target="_blank"className={[styles.Link,styles.Link2].join(' ')}>< SiPowerpages/> Materials</Link>
                     </div>
                     </div>
                     )})

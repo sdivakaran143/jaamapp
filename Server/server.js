@@ -22,11 +22,12 @@ exp.get("/allcourse", async(req, res) => {
         res.send(result);
     });
 exp.post("/storePayment", async(req, res) => {
-    const {infos,id,user } = req.body;
+    const {infos,Productdata,user } = req.body;
     var PaidContent = mainapp.collection("PaidContent");
-    console.log(id);
-    result =await PaidContent.find({product_id:id}).toArray();
+    // console.log(id);
+    result =await PaidContent.find({product_id:Productdata._id}).toArray();
     coursedata={
+        ...Productdata,
         ...result[0],
         ...infos
     }
