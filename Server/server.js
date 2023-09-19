@@ -22,14 +22,14 @@ exp.get("/allcourse", async(req, res) => {
         res.send(result);
     });
 exp.post("/storePayment", async(req, res) => {
-    const {infos,Productdata,user } = req.body;
+    const {Payment_id,Productdata,user } = req.body;
     var PaidContent = mainapp.collection("PaidContent");
     // console.log(id);
     result =await PaidContent.find({product_id:Productdata._id}).toArray();
     coursedata={
-        ...Productdata,
         ...result[0],
-        ...infos
+        ...Productdata,
+        ...Payment_id
     }
     var Users = mainapp.collection("Users");
     await Users.updateOne({ uid:user.uid},{ $push: { Products: coursedata } } );
