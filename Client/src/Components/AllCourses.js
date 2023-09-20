@@ -10,7 +10,6 @@ import CircularProgress from '@mui/material/CircularProgress';
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
-
 export default function  AllCourse(){
     const {user} = useContext(UserContext);
     const userreloard = useContext(UserReferesh);
@@ -34,6 +33,7 @@ export default function  AllCourse(){
     }, [user]);
     
     const handlePaymentSuccess = async (response,data) => {
+        setAlertState(true);
         try {
             const paymentData = {
                 Payment_id:response,
@@ -42,7 +42,6 @@ export default function  AllCourse(){
             };
             await axios.post("https://jaam-app-api.onrender.com/storePayment",paymentData);
             alert("Payment Successfull");
-            setAlertState(true);
             userreloard();
         } catch (error) {
             console.error("Error storing payment data:", error);
@@ -68,7 +67,7 @@ export default function  AllCourse(){
                 address:"Developer Street,React(Tk),Web(DT)-404",
             },
             theme: {
-                color: "#3399cc",
+                color: "#ffffff",
             },
         };
         if(sessionStorage.getItem("user")){

@@ -14,7 +14,6 @@ const MyCoursegenerate = (Products) => {
                          backgroundSize:"cover"
                         }}>
                         <span>Purchased</span>
-                        {/* <img src='https://i.imgur.com/jRVDeI8.jpg'/> */}
                     </div>
                     <div className={styles.bottom}>
                         <h2>{data.tittle}</h2>
