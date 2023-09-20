@@ -10,7 +10,7 @@ const MyCoursegenerate = (Products) => {
                     <div className={styles.card} key={i}>
                     <div className={styles.top}
                      style={{
-                         background:`url("https://i.imgur.com/jRVDeI8.jpg") no-repeat`,
+                         background:`url(${data.image_link}) no-repeat`,
                          backgroundSize:"cover"
                         }}>
                         <span>Purchased</span>

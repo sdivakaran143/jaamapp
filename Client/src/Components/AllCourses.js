@@ -87,8 +87,8 @@ export default function  AllCourse(){
                     <div className={styles.card} key={i}>
                         <div className={styles.top}
                          style={{
-                             background:`url("https://i.imgur.com/jRVDeI8.jpg") no-repeat`,
-                             backgroundSize:"cover"
+                            background:`url(${data.image_link}) no-repeat`,
+                            backgroundSize:"cover"
                             }}>
                             <span>&#8377; {data.price}</span>
                         </div>
