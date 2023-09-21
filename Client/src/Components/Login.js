@@ -69,16 +69,16 @@ export const Login = () => {
                 {
                     (signin)?"":
                     (<div>
-                    <TextField className={styles.inputfield} label="Name" variant="standard" type="text" value={userdata.name} placeholder="Enter Name" onChange={(e) => setuserdata({...userdata,name:e.target.value})}/>
-                    <TextField className={styles.inputfield} label="PhoneNumber" variant="standard" type="number" value={userdata.phonenumber} placeholder="Enter PhoneNumber" onChange={(e) => setuserdata({...userdata,phonenumber:e.target.value})}/>
+                    <TextField className={styles.inputfield} label="Name" variant="standard" type="text" value={userdata.name} placeholder="Enter Name" onChange={(e) => setuserdata({...userdata,name:e.target.value})} required />
+                    <TextField className={styles.inputfield} label="PhoneNumber" variant="standard" type="number" value={userdata.phonenumber} placeholder="Enter PhoneNumber" onChange={(e) => setuserdata({...userdata,phonenumber:e.target.value})} required />
                     </div>)
                 }
                 <TextField className={styles.inputfield} label="MailID" variant="standard" type="mailid" value={userdata.mailid} placeholder="Enter MailID" onChange={(e) => {
                      setuserdata({...userdata,mailid:e.target.value});
-                 }}/>
+                 }} required/>
                  <TextField className={styles.inputfield} label="Password" variant="standard" type="password" value={password} placeholder="Enter PassWord" onChange={(e) => {
                     setpassword(e.target.value);
-                 }}/> 
+                 }} required/> 
                 <div className={styles.button}>
                         <Button onClick={(signin)?LoginWithDatas:SignUpWithDatas} variant="contained" color="primary">{(signin)?"LogIn":"SignUp"}</Button> 
                         <br/>

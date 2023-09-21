@@ -13,7 +13,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 export default app;
 
-const db=getFirestore(); // this is used to connect with database
+const db=getFirestore();
 const auth=getAuth(app);
 const GoogleProvider=new GoogleAuthProvider();
 

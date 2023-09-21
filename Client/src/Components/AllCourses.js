@@ -76,9 +76,11 @@ export default function  AllCourse(){
         }else
             alert("Please SignIn");
     };
+    
     const handleClose=()=>{
         setAlertState(false);
     }
+
     return (
         <div className={styles.Course}>
             {(!allcourseload)?allcoursedata.map((data, i) => {

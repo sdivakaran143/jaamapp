@@ -5,6 +5,7 @@ import MyCourse  from "./MyCourses";
 import AllCourse from "./AllCourses";
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
+
 export default function Course() {
     const CourseNavigation = () => {
         return (
@@ -17,6 +18,7 @@ export default function Course() {
             </div>
         )
     }
+
     return (
         <div className={styles.CourseContent}>
             {CourseNavigation()}

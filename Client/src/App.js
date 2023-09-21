@@ -39,7 +39,6 @@ function App() {
           </Routes>
         </UserReferesh.Provider>
       </UserContext.Provider>
-
     </div>
   );
 }
