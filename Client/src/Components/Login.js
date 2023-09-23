@@ -54,8 +54,9 @@ export const Login = () => {
         setsignin(!signin)
     }
 
+const styles2 =signin?styles.bg1:styles.bg2;
     return (
-        <div className={styles.loginbox}>
+        <div className={[styles.loginbox,styles2].join(' ')}>
             <div>
               <Backdrop
                 sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
