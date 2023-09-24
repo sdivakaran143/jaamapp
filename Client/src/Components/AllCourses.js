@@ -7,6 +7,7 @@ import { UserContext,UserReferesh } from '../App';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 import CircularProgress from '@mui/material/CircularProgress';
+
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
@@ -19,7 +20,8 @@ export default function  AllCourse(){
     useEffect(() => {
         const fetchdata = async () => {
             setallcourseload(true);
-            const response = await axios.get("https://jaam-app-api.onrender.com/allcourse");
+            // console.log(process.env);
+            const response = await axios.get(`${process.env.REACT_APP_API_LINK}/allcourse`);
             try{
                 const filteredArray = response.data.filter((Product) =>!JSON.parse(sessionStorage.getItem("user")).Products.some((UserProducts) => UserProducts.product_id === Product._id));
                 setallcoursedata(filteredArray);
@@ -40,7 +42,8 @@ export default function  AllCourse(){
                 Productdata:data,
                 user:user
             };
-            await axios.post("https://jaam-app-api.onrender.com/storePayment",paymentData);
+            await axios.post(`${process.env.REACT_APP_API_LINK}/storePayment`,paymentData);
+            // await axios.post(`https://jaam-app-api.onrender.com`,paymentData);
             alert("Payment Successfull");
             userreloard();
         } catch (error) {
@@ -67,7 +70,7 @@ export default function  AllCourse(){
                 address:"Developer Street,React(Tk),Web(DT)-404",
             },
             theme: {
-                color: "#ffffff",
+                color: "#3366ff",
             },
         };
         if(sessionStorage.getItem("user")){

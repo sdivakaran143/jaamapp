@@ -11,7 +11,6 @@ import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 import axios from "axios";
 
-
 export const Login = () => {
     const [signin,setsignin]=useState(true);
     const Userreloard = useContext(UserReferesh);
@@ -39,7 +38,7 @@ export const Login = () => {
         try {
             setLoading(true);
             await createUserWithEmailAndPassword(auth, userdata.mailid,password);
-            const result = await axios.post("https://jaam-app-api.onrender.com/RegistertoDB",{...userdata,uid:auth?.currentUser?.uid})
+            const result = await axios.post(`${process.env.REACT_APP_API_LINK}/RegistertoDB`,{...userdata,uid:auth?.currentUser?.uid})
             console.log(result.data.message);
             setLoading(false);
             switchSignOption();
