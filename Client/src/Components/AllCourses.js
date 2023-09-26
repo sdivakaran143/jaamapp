@@ -21,7 +21,7 @@ export default function  AllCourse(){
         const fetchdata = async () => {
             setallcourseload(true);
             // console.log(process.env);
-            const response = await axios.get(`${process.env.REACT_APP_API_LINK}/allcourse`);
+            const response = await axios.get("https://jaam-app-api.onrender.com/allcourse");
             try{
                 const filteredArray = response.data.filter((Product) =>!JSON.parse(sessionStorage.getItem("user")).Products.some((UserProducts) => UserProducts.product_id === Product._id));
                 setallcoursedata(filteredArray);
@@ -42,7 +42,7 @@ export default function  AllCourse(){
                 Productdata:data,
                 user:user
             };
-            await axios.post(`${process.env.REACT_APP_API_LINK}/storePayment`,paymentData);
+            await axios.post("https://jaam-app-api.onrender.com/storePayment",paymentData);
             // await axios.post(`https://jaam-app-api.onrender.com`,paymentData);
             alert("Payment Successfull");
             userreloard();
