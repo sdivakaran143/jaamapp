@@ -2,10 +2,8 @@ const express=require("express");
 const {MongoClient} =require("mongodb");
 const cors = require('cors');
 const exp=express();
-
 exp.use(cors());
 exp.use(express.json());
-require('dotenv').config();
 var mainapp;
 
 exp.get("/",(req,res)=>{
@@ -46,8 +44,8 @@ exp.post("/RegistertoDB", async(req, res) => {
     res.status(200).json({ message: "User successfully registered..." });
 });
 
-exp.listen(process.env.PORT,(err,result)=>{
-    const client = new MongoClient(process.env.MONGO_URL, {
+exp.listen(8080,(err,result)=>{
+    const client = new MongoClient("mongodb+srv://developerD:vaD8WpBedDz8oxrb@diva.tnace52.mongodb.net/?retryWrites=true&w=majority", {
         serverApi: {
             version: '1',
             strict: true,
