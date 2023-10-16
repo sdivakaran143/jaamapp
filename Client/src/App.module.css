@@ -138,7 +138,7 @@ h2{
 .loginbox{
     display: flex;
     align-items: center;
-    justify-content: end;
+    justify-content: flex-end;
     height: 90vh;
     /* padding: 0px 20px; */
 }
