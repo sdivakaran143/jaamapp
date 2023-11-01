@@ -20,7 +20,6 @@ export default function  AllCourse(){
     useEffect(() => {
         const fetchdata = async () => {
             setallcourseload(true);
-            // console.log(process.env);
              const response = await axios.get("https://jaam-app-api.onrender.com/allcourse");
             //const response = await axios.get("http://192.168.113.123:8080/allcourse");
             try{
